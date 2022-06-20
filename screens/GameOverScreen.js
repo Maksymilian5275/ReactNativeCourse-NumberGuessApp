@@ -1,10 +1,10 @@
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, Dimensions } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
 import Title from "../components/ui/Title";
 import Colours from "../constants/colours";
 
-function GameOverScreen({roundsNumber, userNumber, onStartNewGame}) {
+function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
     return (
         <View style={styles.rootContainer}>
             <Title>GAME OVER</Title>
@@ -15,16 +15,21 @@ function GameOverScreen({roundsNumber, userNumber, onStartNewGame}) {
                 />
             </View>
             <Text style={styles.summaryText}>
-                    Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text>{" "}
-                    rounds to guess the number{" "}
-                    <Text style={styles.highlight}>{userNumber}</Text>
-                </Text>
-            <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
+                Your phone needed{" "}
+                <Text style={styles.highlight}>{roundsNumber}</Text> rounds to
+                guess the number{" "}
+                <Text style={styles.highlight}>{userNumber}</Text>
+            </Text>
+            <PrimaryButton onPress={onStartNewGame}>
+                Start New Game
+            </PrimaryButton>
         </View>
     );
 }
 
 export default GameOverScreen;
+
+const deviceWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
     rootContainer: {
@@ -34,10 +39,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     imageContainer: {
-        borderRadius: 150,
-        width: 300,
-        height: 300,
+        width: deviceWidth < 380 ? 150 : 300,
+        height: deviceWidth < 380 ? 150 : 300,
         borderWidth: 3,
+        borderRadius: deviceWidth < 380 ? 75 : 150,
         borderColor: Colours.primary800,
         overflow: "hidden",
         margin: 36,
@@ -48,9 +53,9 @@ const styles = StyleSheet.create({
     },
     summaryText: {
         fontFamily: "open-sans",
-        fontSize:24,
-        textAlign:"center",
-        marginBottom:24
+        fontSize: 24,
+        textAlign: "center",
+        marginBottom: 24,
     },
     highlight: {
         fontFamily: "open-sans-bold",

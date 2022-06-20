@@ -4,8 +4,8 @@ import Colours from "../../constants/colours";
 function GuessLogItem({ roundNumber, guess }) {
     return (
         <View style={styles.listItem}>
-            <Text style = {styles.itemText}>#{roundNumber}</Text>
-            <Text style = {styles.itemText}>Opponent's Guess: {guess}</Text>
+            <Text style={styles.itemText}>#{roundNumber}</Text>
+            <Text style={styles.itemText}>Opponent's Guess: {guess}</Text>
         </View>
     );
 }
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
     },
     itemText: {
-        fontFamily: "open-sans"
-    }
+        fontFamily: "open-sans",
+    },
 });
